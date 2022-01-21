@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Xe tăng</title>
+</head>
+<body onload="docReady()">
+<div style="border: 1px solid black; height: 500px; width: 500px; background-color: white;">
+    <img id="myImage" src="image/xe%20tank.png" height="50x">
+</div>
+<div>
+    <button onclick="moveDow()">&#8595;</button>
+    <button onclick="moveUp()">&#8593;</button>
+    <button onclick="moveRight()">&#8594;</button>
+    <button onclick="moveLeft()">&#8592;</button>
+</div>
+<script>
+
+   let image = document.getElementById('myImage');
+
+    function init() {
+        image = document.getElementById('myImage');
+        image.style.position = 'relative';
+        image.style.top = '0px'
+        image.style.left = '0px'
+    }
+
+    init();
+
+    function moveDow() {
+
+        image.style.top = parseInt(image.style.top) + 10 + 'px';
+    }
+
+    function moveUp() {
+
+        image.style.top = parseInt(image.style.top) - 10 + 'px';
+    }
+
+    function moveRight() {
+
+        image.style.left = parseInt(image.style.left) + 10 + 'px';
+    }
+
+    function moveLeft() {
+
+        image.style.left = parseInt(image.style.left) - 10 + 'px';
+    }
+
+    function moveSelection(evt) {
+        console.log('goi ham select: EVT ---> ', evt)
+        console.log('goi ham select', evt.keyCode)
+        switch (evt.keyCode) {
+            case 37:
+                moveLeft();
+                break;
+            case 39:
+                moveRight();
+                break;
+            case 38:
+                moveUp();
+                break;
+            case 40:
+                moveDow();
+                break;
+        }
+    }
+
+    function docReady() {
+        console.log('goi docReady')
+        window.addEventListener('keydown', moveSelection);
+        console.log('sau an phim')
+    }
+
+    document.body.onload = docReady;
+</script>
+</body>
+</html>
